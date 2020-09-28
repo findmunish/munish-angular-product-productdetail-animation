@@ -1,0 +1,25 @@
+<!--
+<h2>PRODUCTS</h2>
+<ul>
+  <li *ngFor="let product of products |async">
+  <a [routerLink]="['/product', product.id]">
+    <span>{{product.id}}: </span>{{product.name}}
+  </a>
+  </li>
+</ul>
+-->
+         <<!--span>{{product.id}}: </span>{{product.name}}-->
+<div class="jumbotron">
+  <h2>PRODUCTS</h2>
+  <ul>
+    <li *ngFor="let product of productList">
+      <button class="btn btn-primary" (click)="toggleDisplay(product)">
+        {{product.isShow ? 'Collapse' : showProductTitle(product)}}
+      </button>
+      <div [@showHideProducts]="product.isShow ? 'show' : 'hide'">
+        <app-product-detail [product]='passProduct(product)'></app-product-detail>
+      </div>
+      <hr />
+    </li>
+  </ul>
+</div>
